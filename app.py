@@ -1,5 +1,6 @@
 from google.cloud import bigquery
-import db_dtypes
+import os
+os.environ["GCLOUD_PROJECT"] = "climate-data-452305"
 client = bigquery.Client()
 import pandas as pd
 from datetime import datetime, timedelta
@@ -1025,7 +1026,7 @@ df = df[df.axisdate.notnull()]
 df_25_P = df[df['element'] == 'PRCP']
 
 df_25_P["Daily Average"] = df_25_P.groupby("axisdate")["value"].transform('mean')
-df_25_P.head()
+
 #make a df that ignores every column except what you'll graph
 df_25_P_near = df_25_P[['axisdate', 'Daily Average']]
 # make a df_go that drops duplicate values and is ready to graph
