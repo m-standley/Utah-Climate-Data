@@ -6,7 +6,6 @@ import plotly.io as pio
 import plotly.graph_objects as go
 import dash
 from dash import dcc, html, Input, Output
-import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
 
@@ -63,6 +62,7 @@ df_25_SNWD_go = df_25_SNWD_near.drop_duplicates()
 df_25_SNWD_go = df_25_SNWD_go[(df_25_SNWD_go["axisdate"]<=yesterday)]
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # TMIN / TMAX
 #filter 2025 by element
 df_25_TMIN = df[df['element'] == 'TMIN']
@@ -89,7 +89,9 @@ df_25_TMIN_go['Daily Average'] = df_25_TMIN_go['Daily Average']/10 #gets the uni
 # make a df_go that drops duplicate values and is ready to graph
 df_25_TMAX_go = df_25_TMAX_near.drop_duplicates()
 df_25_TMAX_go['Daily Average'] = df_25_TMAX_go['Daily Average']/10 # gets the units right. Now its celsius
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # EVAP
 #filter 2025 by element
 df_25_EVAP = df[df['element'] == 'EVAP']
@@ -105,7 +107,9 @@ df_25_EVAP_go = df_25_EVAP_near.drop_duplicates()
 
 # Waits a while before showing data to allow it time to update completely
 df_25_EVAP_go = df_25_EVAP_go[(df_25_EVAP_go["axisdate"]<=yesterday)]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # SNOW
 #filter 2025 by element
 df_25_SNOW = df[df['element'] == 'SNOW']
@@ -121,7 +125,9 @@ df_25_SNOW_go = df_25_SNOW_near.drop_duplicates()
 
 # Waits a while before showing data to allow it time to update completely
 df_25_SNOW_go = df_25_SNOW_go[(df_25_SNOW_go["axisdate"]<=yesterday)]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # WESD
 #filter 2025 by element
 df_25_WESD = df[df['element'] == 'WESD']
@@ -135,7 +141,10 @@ df_25_WESD_near = df_25_WESD[['axisdate', 'Daily Average']]
 # make a df_go that drops duplicate values and is ready to graph
 df_25_WESD_go = df_25_WESD_near.drop_duplicates()
 df_25_WESD_go = df_25_WESD_go[(df_25_WESD_go["axisdate"]<=yesterday)]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # AWND
 #filter 2025 by element
 df_25_AWND = df[df['element'] == 'AWND']
@@ -152,7 +161,9 @@ df_25_AWND_go['Daily Average'] = df_25_AWND_go['Daily Average']/10 # fixes units
 
 # Waits a while before showing data to allow it time to update completely
 df_25_AWND_go = df_25_AWND_go[(df_25_AWND_go["axisdate"]<=yesterday)]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # SN33 / SX33
 #filter 2025 by element
 df_25_SN33 = df[df['element'] == 'SN33']
@@ -179,7 +190,9 @@ df_25_SX33_near = df_25_SX33[['axisdate', 'Daily Average']]
 # make a df_go that drops duplicate values and is ready to graph
 df_25_SX33_go = df_25_SX33_near.drop_duplicates()
 df_25_SX33_go['Daily Average'] = df_25_SX33_go['Daily Average']/10 # fixes units into celsius
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # WSFI
 #filter 2025 by element
 df_25_WSFI = df[df['element'] == 'WSFI']
@@ -199,6 +212,7 @@ df_25_WSFI_go = df_25_WSFI_go[(df_25_WSFI_go["axisdate"]<=yesterday)]
 
 # #define a df by reading your decades df csv file
 df_all = pd.read_csv('df_all.csv', sep=",")
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # DECADES
 # PRCP
@@ -217,6 +231,7 @@ df_PRCP_near = df_PRCP[['axisdate', 'Daily Average']]
 df_PRCP_go = df_PRCP_near.drop_duplicates()
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # SNWD
 #Filter Big One by element
 df_SNWD = df_all[df_all['element'] == 'SNWD']
@@ -230,7 +245,9 @@ df_SNWD_near = df_SNWD[['axisdate', 'Daily Average']]
 
 #drop every duplicate value, making a df_go that is ready to graph
 df_SNWD_go = df_SNWD_near.drop_duplicates()
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # TMIN / TMAX
 #filter 2025 by element
 df_TMIN = df_all[df_all['element'] == 'TMIN']
@@ -257,7 +274,9 @@ df_TMIN_go['Daily Average'] = df_TMIN_go['Daily Average']/10 # fixes units into 
 # make a df_go that drops duplicate values and is ready to graph
 df_TMAX_go = df_TMAX_near.drop_duplicates()
 df_TMAX_go['Daily Average'] = df_TMAX_go['Daily Average']/10 # fixes units into celsius
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # EVAP
 #filter 2025 by element
 df_EVAP = df_all[df_all['element'] == 'EVAP']
@@ -269,7 +288,9 @@ df_EVAP_near = df_EVAP[['axisdate', 'Daily Average']]
 
 # make a df_go that drops duplicate values and is ready to graph
 df_EVAP_go = df_EVAP_near.drop_duplicates()
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # SNOW
 #filter by element
 df_SNOW = df_all[df_all['element'] == 'SNOW']
@@ -285,7 +306,9 @@ df_SNOW_near = df_SNOW[['axisdate', 'Daily Average']]
 
 # make a df_go that drops duplicate values and is ready to graph
 df_SNOW_go = df_SNOW_near.drop_duplicates()
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # WESD
 #filter by element
 df_WESD = df_all[df_all['element'] == 'WESD']
@@ -299,7 +322,9 @@ df_WESD_near = df_WESD[['axisdate', 'Daily Average']]
 # make a df_go that drops duplicate values and is ready to graph
 df_WESD_go = df_WESD_near.drop_duplicates()
 df_WESD_go = df_WESD_go.sort_values(by="axisdate")
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # AWND
 #filter by element
 df_AWND = df_all[df_all['element'] == 'AWND']
@@ -313,7 +338,9 @@ df_AWND_near = df_AWND[['axisdate', 'Daily Average']]
 # make a df_go that drops duplicate values and is ready to graph
 df_AWND_go = df_AWND_near.drop_duplicates()
 df_AWND_go['Daily Average'] = df_AWND_go['Daily Average']/10 # fixes units into km/h
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # SN33 / SX33
 #filter by element
 df_SN33 = df_all[df_all['element'] == 'SN33']
@@ -340,6 +367,8 @@ df_SX33_near = df_SX33[['axisdate', 'Daily Average']]
 # make a df_go that drops duplicate values and is ready to graph
 df_SX33_go = df_SX33_near.drop_duplicates()
 df_SX33_go['Daily Average'] = df_SX33_go['Daily Average']/10 # fixes units into celsius
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 # WSFI
 #filter by element
@@ -359,6 +388,7 @@ df_WSFI_go['Daily Average'] = df_WSFI_go['Daily Average']/10 # fixes units into 
 
 #Plots
 # ----------------------------------------------------------------------------------------------------------
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #PRCP - Precipitation
 
 hue = 'steelblue' #line color of graph
@@ -425,8 +455,9 @@ fig_PRCP.update_yaxes(color = hue,
                  rangemode = 'tozero',
                  title = dict(text = "Precipitation (mm)")
                  )
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # #SNWD - Snow Depth
 
 hue = 'slategrey' #line color of graph
@@ -470,7 +501,7 @@ fig_SNWD.update_layout(plot_bgcolor = canvas,
                                yanchor = 'top',
                                y = 0.84)
                                )
-    
+
 fig_SNWD.update_xaxes(color = hue,
                 gridcolor = hue,
                 linecolor = hue,
@@ -493,7 +524,9 @@ fig_SNWD.update_yaxes(color = hue,
                  rangemode = 'tozero',
                  title = dict(text = "Snow Depth (mm)")
                  )
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # #TMIN / TMAX - Min and Max Temp
 
 hue = 'slategrey' #line color of graph
@@ -582,7 +615,9 @@ fig_TMIN.update_yaxes(color = hue,
                  rangemode = 'tozero',
                  title = dict(text = "Temperature (C)")
                  )
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # #EVAP - EVAPORATION
 
 hue = 'teal' #line color of graph
@@ -651,8 +686,9 @@ fig_EVAP.update_yaxes(color = hue,
                  rangemode = 'tozero',
                  title = dict(text = "Evaporation (mm)")
                  )
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #SNOW - SNOWFALL
 
 hue = 'darkslateblue' #line color of graph
@@ -721,7 +757,10 @@ fig_SNOW.update_yaxes(color = hue,
                  rangemode = 'tozero',
                  title = dict(text = "Snowfall (mm)")
                  )
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #WESD - SNOW-WATER EQUIVALENT
 
 hue = 'steelblue' #line color of graph
@@ -790,7 +829,9 @@ fig_WESD.update_yaxes(color = hue,
                  rangemode = 'tozero',
                  title = dict(text = "Water Equivalent (mm)")
                  )
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #AWND - AVERAGE DAILY WIND SPEED
 
 hue = 'darkgreen' #line color of graph
@@ -859,7 +900,9 @@ fig_AWND.update_yaxes(color = hue,
                  rangemode = 'tozero',
                  title = dict(text = "Wind Speed (km/h)")
                  )
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #SN33 / SX33 - Min and Max Soil Temp (Bare ground, depth of 20 cm)
 
 hue = 'slategrey' #line color of graph
@@ -1018,7 +1061,7 @@ fig_WSFI.update_yaxes(color = hue,
                  title = dict(text = "Wind Speed (km/h)")
                  )
 
-## Dashboard
+# Dashboard
 
 all_viz = ["fig_PRCP", "fig_SNOW", "fig_SNWD", "fig_WESD", "fig_EVAP", "fig_TMIN", "fig_SN33", "fig_AWND", "fig_WSFI"]
 

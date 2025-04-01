@@ -5,11 +5,11 @@ def prcp_prep(df_25_P, yesterday):
 
     #make a df that ignores every column except what you'll graph
     df_25_P_near = df_25_P[['axisdate', 'Daily Average']]
-    # make a df_go that drops duplicate values and is ready to graph
-    df_25_PRCP_go = df_25_P_near.drop_duplicates()
-    df_25_PRCP_go = df_25_PRCP_go[(df_25_PRCP_go["axisdate"]<=yesterday)]
+    # make a df_g that drops duplicate values and is ready to graph
+    df_25_PRCP_g = df_25_P_near.drop_duplicates()
+    df_25_PRCP_g = df_25_PRCP_g[(df_25_PRCP_g["axisdate"]<=yesterday)]
 
-    return df_25_PRCP_go
+    return df_25_PRCP_g
 
 def prcp_decade(df_PRCP):
     print('yo momma')
@@ -20,7 +20,7 @@ def prcp_decade(df_PRCP):
     #make a df that ignores every column except what you'll graph
     df_PRCP_near = df_PRCP[['axisdate', 'Daily Average']]
 
-    #drop every duplicate value, making a df_go that is ready to graph
-    df_PRCP_go = df_PRCP_near.drop_duplicates()
+    #drop every duplicate value, making a df_g that is ready to graph
+    df_PRCP_g = df_PRCP_near.drop_duplicates()
 
-    return df_PRCP_go
+    return df_PRCP_g
