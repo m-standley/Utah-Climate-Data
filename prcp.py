@@ -1,3 +1,5 @@
+import plotly.graph_objects as go
+
 def prcp_prep(df_25_P, yesterday):
     print('made it to prcp_prep')
 
@@ -24,3 +26,73 @@ def prcp_decade(df_PRCP):
     df_PRCP_g = df_PRCP_near.drop_duplicates()
 
     return df_PRCP_g
+
+def fig_prcp(df_PRCP_g, df_25_PRCP_g):
+    
+
+    hue = 'steelblue' #line color of graph
+    canvas = 'aliceblue' #background color
+    reference = 'lightsteelblue' #color of reference line
+
+    df_PRCP_g = df_PRCP_g.sort_values(by="axisdate")
+    df_25_PRCP_g = df_25_PRCP_g.sort_values(by="axisdate")
+
+    fig_PRCP = go.Figure ()
+    fig_PRCP.add_trace(go.Scatter(x = df_PRCP_g["axisdate"],
+                            y = df_PRCP_g["Daily Average"],
+                            mode = "lines",
+                            name = "Decade Average",
+                            hoverinfo = 'none',
+                            #connectgaps = False,
+                            line = dict(color = reference,
+                                        #shape = 'spline',
+                                        width = 1)))
+    fig_PRCP.add_trace(go.Scatter(x = df_25_PRCP_g["axisdate"],
+                            y = df_25_PRCP_g["Daily Average"],
+                            mode = "lines",
+                            name = "2025",
+                            connectgaps = True,
+                            line = dict(color = hue,
+                                        shape = 'spline',
+                                        width = 3)))
+    fig_PRCP.update_layout(plot_bgcolor = canvas,
+                    paper_bgcolor = canvas,
+                    legend_font_color = hue,
+                    legend_orientation = 'h',
+                    legend_yanchor = 'top',
+                    legend_y = 1.15,
+                    legend_xanchor = 'right',
+                    legend_x = 1,
+                    title = dict(text = "PRECIPITATION",
+                                font_color = hue,
+                                xanchor = 'left',
+                                x = 0.074,
+                                font_size = 25,
+                                yanchor = 'top',
+                                y = 0.84)
+                                )
+        
+    fig_PRCP.update_xaxes(color = hue,
+                    gridcolor = hue,
+                    linecolor = hue,
+                    mirror = True,
+                    showgrid = False,
+                    ticks = "inside",
+                    ticklen = 5,
+                    tickformat= "%b %d",
+                    nticks = 12,
+                    title = dict(text = ""),
+                    )
+    fig_PRCP.update_yaxes(color = hue,
+                    gridcolor = hue,
+                    linecolor = hue,
+                    mirror = True,
+                    showgrid = True,
+                    ticks = 'inside',
+                    ticklen = 5,
+                    zeroline = False,
+                    rangemode = 'tozero',
+                    title = dict(text = "Precipitation (mm)")
+                    )
+    return fig_PRCP
+    
