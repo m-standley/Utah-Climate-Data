@@ -2,12 +2,12 @@ import plotly.graph_objects as go
 import dash
 from dash import dcc, html, Input, Output
 
-def dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_AWND, fig_SN33, fig_WSFI):
+def dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_AWND, fig_SN33):
     print('made it to dashboard')
 
     # Dashboard
 
-    all_viz = ["fig_PRCP", "fig_SNOW", "fig_SNWD", "fig_WESD", "fig_EVAP", "fig_TMIN", "fig_SN33", "fig_AWND", "fig_WSFI"]
+    all_viz = ["fig_PRCP", "fig_SNOW", "fig_SNWD", "fig_WESD", "fig_EVAP", "fig_TMIN", "fig_SN33", "fig_AWND"]
 
     graph1 = fig_PRCP
     graph2 = fig_SNOW
@@ -17,7 +17,6 @@ def dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_
     graph6 = fig_TMIN
     graph7 = fig_SN33
     graph8 = fig_AWND
-    graph9 = fig_WSFI
 
     app = dash.Dash(__name__)
 
@@ -44,8 +43,7 @@ def dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_
                         {'label': 'Evaporation', 'value': 'graph5'},
                         {'label': 'Temperature', 'value': 'graph6'},
                         {'label': 'Soil Temperature', 'value': 'graph7'},
-                        {'label': 'Wind Speed', 'value': 'graph8'},
-                        {'label': 'Wind Gusts', 'value': 'graph9'}
+                        {'label': 'Wind Speed', 'value': 'graph8'}
                         ],
                 value='graph1',
                 style={
@@ -165,16 +163,6 @@ def dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_
             app_style['backgroundColor'] = 'rgb(220,240,220)'
             title_style['color'] = color
             return graph8, "This is a measure, in kilometers per hour, of the average daily wind speed. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style
-
-        elif selected_graph == 'graph9':
-            textcolor = 'rgb(255,255,241)'
-            color = 'rgb(128,128,38)'
-            dropdown_style['backgroundColor'] = textcolor
-            dropdown_style['color'] = color
-            explanation_style['color'] = color
-            app_style['backgroundColor'] = 'rgb(240,240,220)'
-            title_style['color'] = color
-            return graph9, "This is a measure, in kilometers per hour, of the maximum daily wind speed. Individual wind gusts can be considerably faster and more destructive than the average daily wind speed. This measurement represents a daily average of maximum gust speed for the entire state.", explanation_style, dropdown_style, app_style, title_style
 
         else:
             dropdown_style['backgroundColor'] = 'white'

@@ -16,7 +16,6 @@ from snow import snow_prep, snow_decade, fig_snow
 from wesd import wesd_prep, wesd_decade, fig_wesd
 from awnd import awnd_prep, awnd_decade, fig_awnd
 from sn33 import sn33_prep, sn33_decade, fig_sn33
-from wsfi import wsfi_prep, wsfi_decade, fig_wsfi
 from dashboarder import dashboarder
 
 
@@ -107,12 +106,5 @@ df_SX33 = df_all[df_all['element'] == 'SX33']
 df_SN33_g, df_SX33_g = sn33_decade(df_SN33, df_SX33) # Unpack
 fig_SN33 = fig_sn33(df_SN33_g, df_SX33_g, df_25_SN33_g, df_25_SX33_g)
 
-# WSFI
-df_25_WSFI = df[df['element'] == 'WSFI']
-df_25_WSFI_g = wsfi_prep(df_25_WSFI, yesterday)
-df_WSFI = df_all[df_all['element'] == 'WSFI']
-df_WSFI_g = wsfi_decade(df_WSFI)
-fig_WSFI = fig_wsfi(df_25_WSFI_g, df_WSFI_g)
-
-dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_AWND, fig_SN33, fig_WSFI)
+dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_AWND, fig_SN33)
 
