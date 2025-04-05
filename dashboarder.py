@@ -184,7 +184,7 @@ def dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_
             title_style['color'] = 'black'
             return {}, "", explanation_style, dropdown_style, app_style, title_style
 
-    if __name__ == '__main__':
-        app.run(debug=True)
+    # if __name__ == '__dashboarder__':
+    app.run(debug=True)
 
     return app

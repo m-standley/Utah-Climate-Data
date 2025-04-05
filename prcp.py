@@ -14,7 +14,7 @@ def prcp_prep(df_25_P, yesterday):
     return df_25_PRCP_g
 
 def prcp_decade(df_PRCP):
-    print('yo momma')
+    print('made it to PRCP_decade')
     df_PRCP = df_PRCP.sort_values(by='axisdate')
     #take an the average of everything that has each month/day combo, make it a new column.
     df_PRCP["Daily Average"] = df_PRCP.groupby("date")["value"].transform('mean')

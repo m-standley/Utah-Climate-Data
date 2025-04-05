@@ -115,4 +115,3 @@ df_WSFI_g = wsfi_decade(df_WSFI)
 fig_WSFI = fig_wsfi(df_25_WSFI_g, df_WSFI_g)
 
 dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_AWND, fig_SN33, fig_WSFI)
-

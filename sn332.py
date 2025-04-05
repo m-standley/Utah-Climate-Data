@@ -15,11 +15,12 @@ def sn33_prep(df_25_SN33, df_25_SX33):
     # make a df_g that drops duplicate values and is ready to graph
     df_25_SN33_g = df_25_SN33_near.drop_duplicates().copy()
     df_25_SN33_g.loc[:, 'Daily Average'] = df_25_SN33_g['Daily Average'] / 10
-    
+    print(f"sn33_prep output df_25_SN33_g type: {type(df_25_SN33_g)}")
 
     # make a df_g that drops duplicate values and is ready to graph
     df_25_SX33_g = df_25_SX33_near.drop_duplicates().copy()
     df_25_SX33_g.loc[:, 'Daily Average'] = df_25_SX33_g['Daily Average'] / 10
+    print(f"sn33_prep output df_25_SX33_g type: {type(df_25_SX33_g)}")
     return df_25_SN33_g, df_25_SX33_g
 
 
@@ -37,10 +38,12 @@ def sn33_decade(df_SN33, df_SX33):
     # make a df_g that drops duplicate values and is ready to graph
     df_SN33_g = df_SN33_near.drop_duplicates().copy()
     df_SN33_g.loc[:, 'Daily Average'] = df_SN33_g['Daily Average'] / 10
+    print(f"sn33_decade output df_SN33_g type: {type(df_SN33_g)}")
 
     # make a df_g that drops duplicate values and is ready to graph
     df_SX33_g = df_SX33_near.drop_duplicates().copy()
     df_SX33_g.loc[:, 'Daily Average'] = df_SX33_g['Daily Average'] / 10
+    print(f"sn33_decade output df_SX33_g type: {type(df_SX33_g)}")
     return df_SN33_g, df_SX33_g
 
 
