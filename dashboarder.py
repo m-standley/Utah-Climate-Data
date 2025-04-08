@@ -24,15 +24,29 @@ def dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_
         id='app-container',
         style={'padding': '20px'},
         children=[
-            html.H1(
-                "UTAH WEATHER AND CLIMATE",
-                id='title-text',
-                style={
-                    'fontFamily': 'Arial, sans-serif',
-                    'fontSize': '36px',
-                    'textAlign': 'center',
-                    'marginBottom': '20px'
-                }
+            html.Div(  # Container for the main title and subtitle
+                style={'textAlign': 'center', 'marginBottom': '20px'},
+                children=[
+                    html.H1(
+                        "UTAH WEATHER AND CLIMATE",
+                        id='title-text',
+                        style={
+                            'fontFamily': 'Arial, sans-serif',
+                            'fontSize': '36px',
+                            'marginBottom': '5px'
+                        }
+                    ),
+                    html.H3(  # Subtitle
+                        "Using Data From NOAA's Global Historical Climatology Network",
+                        id='subtitle-text',
+                        style={
+                            'fontFamily': 'Arial, sans-serif',
+                            'fontSize': '12px',
+                            'textAlign': 'center',
+                            'marginTop': '0px'
+                        }
+                    ),
+                ]
             ),
             dcc.Dropdown(
                 id='graph-selector',
@@ -72,6 +86,7 @@ def dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_
         Output('graph-selector', 'style'),
         Output('app-container', 'style'),
         Output('title-text', 'style'),
+        Output('subtitle-text', 'style'),
         Input('graph-selector', 'value')
     )
     def update_graph(selected_graph):
@@ -82,97 +97,98 @@ def dashboarder(fig_PRCP, fig_SNWD, fig_TMIN, fig_EVAP, fig_SNOW, fig_WESD, fig_
         }
         explanation_style = {'fontFamily': 'Arial, sans-serif', 'marginTop': '30px','marginBottom': '30px'}
         app_style = {'padding': '20px'}
-        title_style = {'fontFamily': 'Arial', 'fontSize': '30px','textAlign': 'center', 'marginBottom': '10px'} #create title style.
+        title_style = {'fontFamily': 'Arial', 'fontSize': '30px','textAlign': 'center', 'marginBottom': '5px'}
+        subtitle_style = {'fontFamily': 'Arial, sans-serif', 'fontSize': '12px', 'textAlign': 'center', 'marginTop': '0px'}
 
         if selected_graph == 'graph1':
-            textcolor = 'rgb(241,248,254)'
             color = 'rgb(85,129,176)'
-            dropdown_style['backgroundColor'] = textcolor
+            dropdown_style['backgroundColor'] = 'rgb(241,248,254)'
             dropdown_style['color'] = color
             explanation_style['color'] = color
             app_style['backgroundColor'] = 'rgb(220,235,250)'
-            title_style['color'] = color #set title color
-            return graph1, "This is a measure, in millimeters, of how much water (both rain and snow) has fallen in the last 24 hours. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style
+            title_style['color'] = color
+            subtitle_style['color'] = color
+            return graph1, "This is a measure, in millimeters, of how much water (both rain and snow) has fallen in the last 24 hours. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style, subtitle_style
 
         elif selected_graph == 'graph2':
-            textcolor = 'rgb(230,220,248)'
             color = 'rgb(70,61,134)'
-            dropdown_style['backgroundColor'] = textcolor
+            dropdown_style['backgroundColor'] = 'rgb(230,220,248)'
             dropdown_style['color'] = color
             explanation_style['color'] = color
             app_style['backgroundColor'] = 'rgb(215,210,240)'
             title_style['color'] = color
-            return graph2, "This is a measure, in millimeters,  of how much snow has fallen in the last 24 hours. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style
+            subtitle_style['color'] = color
+            return graph2, "This is a measure, in millimeters,  of how much snow has fallen in the last 24 hours. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style, subtitle_style
 
         elif selected_graph == 'graph3':
-            textcolor = 'rgb(245,245,245)'
             color = 'rgb(115,127,142)'
-            dropdown_style['backgroundColor'] = textcolor
+            dropdown_style['backgroundColor'] = 'rgb(245,245,245)'
             dropdown_style['color'] = color
             explanation_style['color'] = color
             app_style['backgroundColor'] = 'rgb(235,235,235)'
             title_style['color'] = color
-            return graph3, "This is a measure of how deep the snow is, in millimeters. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style
+            subtitle_style['color'] = color
+            return graph3, "This is a measure of how deep the snow is, in millimeters. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style, subtitle_style
 
         elif selected_graph == 'graph4':
-            textcolor = 'rgb(241,248,254)'
             color = 'rgb(85,129,176)'
-            dropdown_style['backgroundColor'] = textcolor
+            dropdown_style['backgroundColor'] = 'rgb(241,248,254)'
             dropdown_style['color'] = color
             explanation_style['color'] = color
             app_style['backgroundColor'] = 'rgb(220,235,250)'
             title_style['color'] = color
-            return graph4, "Snow water equivalent (SWE) is a measure of how much water would be produced if the snow were to melt, here recorded in millimeters. A higher SWE means a heavier, wetter snow. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style
+            subtitle_style['color'] = color
+            return graph4, "Snow water equivalent (SWE) is a measure of how much water would be produced if the snow were to melt, here recorded in millimeters. A higher SWE means a heavier, wetter snow. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style, subtitle_style
 
         elif selected_graph == 'graph5':
-            textcolor = 'rgb(243,255,255)'
             color = 'rgb(55,126,127)'
-            dropdown_style['backgroundColor'] = textcolor
+            dropdown_style['backgroundColor'] = 'rgb(243,255,255)'
             dropdown_style['color'] = color
             explanation_style['color'] = color
             app_style['backgroundColor'] = 'rgb(220,240,240)'
             title_style['color'] = color
-            return graph5, "This is a measure, in millimeters, of how much water is lost due to natural evaporation over the course of 24 hours. Evaporation is measured by placing a pan of water in a sunny area and measuring how much is lost over time. In the environment, water loss due to evaporation can take place in water bodies, the soil, and even plants. Evaporation can be very rapid under hot and dry conditions. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style
+            subtitle_style['color'] = color
+            return graph5, "This is a measure, in millimeters, of how much water is lost due to natural evaporation over the course of 24 hours. Evaporation is measured by placing a pan of water in a sunny area and measuring how much is lost over time. In the environment, water loss due to evaporation can take place in water bodies, the soil, and even plants. Evaporation can be very rapid under hot and dry conditions. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style, subtitle_style
 
         elif selected_graph == 'graph6':
-            textcolor = 'rgb(245,245,245)'
             color = 'rgb(115,127,142)'
-            dropdown_style['backgroundColor'] = textcolor
+            dropdown_style['backgroundColor'] = 'rgb(245,245,245)'
             dropdown_style['color'] = color
             explanation_style['color'] = color
             app_style['backgroundColor'] = 'rgb(235,235,235)'
             title_style['color'] = color
-            return graph6, "This is a measure, in Celsius, of the maximum and minimum daily air temperatures. These measurements represent daily averages for the entire state.", explanation_style, dropdown_style, app_style, title_style
+            subtitle_style['color'] = color
+            return graph6, "This is a measure, in Celsius, of the maximum and minimum daily air temperatures. These measurements represent daily averages for the entire state.", explanation_style, dropdown_style, app_style, title_style, subtitle_style
 
         elif selected_graph == 'graph7':
-            textcolor = 'rgb(245,245,245)'
             color = 'rgb(115,127,142)'
-            dropdown_style['backgroundColor'] = textcolor
+            dropdown_style['backgroundColor'] = 'rgb(245,245,245)'
             dropdown_style['color'] = color
             explanation_style['color'] = color
             app_style['backgroundColor'] = 'rgb(235,235,235)'
             title_style['color'] = color
-            return graph7, "This is a measure, in Celsius, of the maximum and minimum daily soil temperatures. Measurements were taken on bare soil at a depth of 20 cm. These measurements represent daily averages for the entire state.", explanation_style, dropdown_style, app_style, title_style
+            subtitle_style['color'] = color
+            return graph7, "This is a measure, in Celsius, of the maximum and minimum daily soil temperatures. Measurements were taken on bare soil at a depth of 20 cm. These measurements represent daily averages for the entire state.", explanation_style, dropdown_style, app_style, title_style, subtitle_style
 
         elif selected_graph == 'graph8':
-            textcolor = 'rgb(243,255,241)'
             color = 'rgb(41,98,24)'
-            dropdown_style['backgroundColor'] = textcolor
+            dropdown_style['backgroundColor'] = 'rgb(243,255,241)'
             dropdown_style['color'] = color
             explanation_style['color'] = color
             app_style['backgroundColor'] = 'rgb(220,240,220)'
             title_style['color'] = color
-            return graph8, "This is a measure, in kilometers per hour, of the average daily wind speed. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style
+            subtitle_style['color'] = color
+            return graph8, "This is a measure, in kilometers per hour, of the average daily wind speed. This measurement represents a daily average for the entire state.", explanation_style, dropdown_style, app_style, title_style, subtitle_style
 
         else:
+            color = 'black'
             dropdown_style['backgroundColor'] = 'white'
-            dropdown_style['color'] = 'black'
-            explanation_style['color'] = 'black'
+            dropdown_style['color'] = color
+            explanation_style['color'] = color
             app_style['backgroundColor'] = 'rgb(240,240,240)'
-            title_style['color'] = 'black'
-            return {}, "", explanation_style, dropdown_style, app_style, title_style
+            title_style['color'] = color
+            subtitle_style['color'] = color
+            return {}, "", explanation_style, dropdown_style, app_style, title_style, subtitle_style
 
-    # if __name__ == '__dashboarder__':
+
     app.run(debug=True)
-
-    return app
